@@ -13,8 +13,8 @@ function Checkout({userId}) {
     city: '',
     zipCode: '',
     paymentMethod: 'credit_card',
-    receiptMethod: 'delivery',  // New field for delivery method
-    storeLocation: '',  // New field for store location if pickup is selected
+    receiptMethod: 'delivery',
+    storeLocation: '',
   });
 
   const handleInputChange = (e) => {
@@ -35,7 +35,7 @@ function Checkout({userId}) {
       orderDate: new Date().toISOString(),
       orderId: orderId,
       status: 'Pending',
-      id: userId
+      userId: userId
     };
   
     // Store order in localStorage
@@ -45,11 +45,11 @@ function Checkout({userId}) {
   
     // Store or update customer in localStorage
     const existingCustomers = JSON.parse(localStorage.getItem('customers') || '[]');
-    const customerIndex = existingCustomers.findIndex(c => c.email === formData.email);
+    const customerIndex = existingCustomers.findIndex(c => c.id === userId);
     if (customerIndex === -1) {
       // New customer
       const newCustomer = {
-        id: existingCustomers.length + 1,
+        id: userId,
         name: formData.name,
         email: formData.email,
         phone: '', // You might want to add a phone field to your form
@@ -59,7 +59,7 @@ function Checkout({userId}) {
     } else {
       // Existing customer
       if (!existingCustomers[customerIndex].orders) {
-        existingCustomers[customerIndex].orders = []; // Initialize orders array if it doesn't exist
+        existingCustomers[customerIndex].orders = [];
       }
       existingCustomers[customerIndex].orders.push(orderId);
     }
@@ -78,7 +78,6 @@ function Checkout({userId}) {
     "Los Angeles Store - 456 Hollywood Blvd, Los Angeles, CA 90028",
     "Chicago Store - 789 Michigan Ave, Chicago, IL 60611",
   ];
-
 
   return (
     <div className="max-w-2xl mx-auto">

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   BrowserRouter as Router,
   Routes,
@@ -6,6 +6,7 @@ import {
   Navigate,
 } from "react-router-dom";
 import { CartProvider } from "./CartContext";
+import { mockData } from './mockdata';  // Adjust the import path as needed
 import Header from "./components/Header/Header";
 import Navigation from "./components/Navigation/Navigation";
 import ProductList from "./components/ProductList/ProductList";
@@ -25,6 +26,20 @@ function App() {
   const [user, setUser] = useState(null);
   const [showAuthModal, setShowAuthModal] = useState(false);
   const [authMode, setAuthMode] = useState("login");
+
+  useEffect(() => {
+    const initializeProducts = () => {
+      const storedProducts = localStorage.getItem('products');
+      if (!storedProducts) {
+        const products = Object.entries(mockData).flatMap(([category, items]) => 
+          items.map(item => ({ ...item, category }))
+        );
+        localStorage.setItem('products', JSON.stringify(products));
+      }
+    };
+
+    initializeProducts();
+  }, []);
 
   const handleLogin = (userData) => {
     setUser(userData);

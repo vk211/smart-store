@@ -9,12 +9,22 @@ function ProductList() {
 
   useEffect(() => {
     const loadProducts = () => {
+      let storedProducts = JSON.parse(localStorage.getItem('products'));
+      
+      // If no products in localStorage, initialize with mockData
+      if (!storedProducts) {
+        storedProducts = Object.entries(mockData).flatMap(([category, items]) => 
+          items.map(item => ({ ...item, category }))
+        );
+        localStorage.setItem('products', JSON.stringify(storedProducts));
+      }
+
       let productsToSet;
       if (!categoryName || categoryName === 'all') {
-        productsToSet = Object.values(mockData).flat();
+        productsToSet = storedProducts;
       } else {
         const category = categoryName.replace('smart-', '');
-        productsToSet = mockData[category] || [];
+        productsToSet = storedProducts.filter(product => product.category === category);
       }
       setProducts(productsToSet);
     };
