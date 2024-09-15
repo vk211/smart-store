@@ -19,20 +19,6 @@ const Customer = ({ userId }) => {
     setOrders(userOrders);
   }, [userId]);
 
-  const editOrder = (id, updatedOrder) => {
-    const updatedOrders = orders.map(order => 
-      order.id === id ? { ...order, ...updatedOrder } : order
-    );
-    setOrders(updatedOrders);
-    
-    // Update localStorage
-    const allOrders = JSON.parse(localStorage.getItem('orders') || '[]');
-    const updatedAllOrders = allOrders.map(order => 
-      order.id === id ? { ...order, ...updatedOrder } : order
-    );
-    localStorage.setItem('orders', JSON.stringify(updatedAllOrders));
-  };
-
   const deleteOrder = (id) => {
     if (window.confirm('Are you sure you want to cancel this order?')) {
       const updatedOrders = orders.filter(order => order.id !== id);
@@ -44,10 +30,6 @@ const Customer = ({ userId }) => {
       localStorage.setItem('orders', JSON.stringify(updatedAllOrders));
     }
   };
-
-//   if (!customer) {
-//     return <div>Customer not found</div>;
-//   }
 
   return (
     <div>
@@ -81,15 +63,6 @@ const Customer = ({ userId }) => {
                   <td className="border p-2">{order.status}</td>
                   <td className="border p-2">{new Date(order.orderDate).toLocaleDateString()}</td>
                   <td className="border p-2">
-                    <select
-                      value={order.status}
-                      onChange={(e) => editOrder(order.id, { status: e.target.value })}
-                      className="mr-2 p-1 border rounded"
-                    >
-                      <option value="Pending">Pending</option>
-                      <option value="Shipped">Shipped</option>
-                      <option value="Delivered">Delivered</option>
-                    </select>
                     {order.status === 'Pending' && (
                       <button
                         onClick={() => deleteOrder(order.id)}

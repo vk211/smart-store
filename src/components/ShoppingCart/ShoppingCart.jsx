@@ -7,7 +7,27 @@ function ShoppingCart() {
   const navigate = useNavigate();
 
   const calculateTotal = () => {
-    return cartItems.reduce((total, item) => total + item.price * item.quantity, 0).toFixed(2);
+    return cartItems.reduce((total, item) => {
+      let itemTotal = item.price * item.quantity;
+      if (item.discount) {
+        itemTotal -= itemTotal * (item.discount / 100);
+      }
+      if (item.rebate) {
+        itemTotal -= item.rebate * item.quantity;
+      }
+      return total + itemTotal;
+    }, 0).toFixed(2);
+  };
+
+  const calculateItemSubtotal = (item) => {
+    let subtotal = item.price * item.quantity;
+    if (item.discount) {
+      subtotal -= subtotal * (item.discount / 100);
+    }
+    if (item.rebate) {
+      subtotal -= item.rebate * item.quantity;
+    }
+    return subtotal.toFixed(2);
   };
 
   const handleCheckout = () => {
@@ -40,7 +60,13 @@ function ShoppingCart() {
               <div className="flex-1">
                 <h3 className="text-xl font-semibold">{item.name}</h3>
                 <p className="text-gray-600">Price: ${item.price.toFixed(2)}</p>
-                <p className="text-gray-600">Subtotal: ${(item.price * item.quantity).toFixed(2)}</p>
+                {item.discount && (
+                  <p className="text-green-600">Discount: {item.discount}%</p>
+                )}
+                {item.rebate && (
+                  <p className="text-blue-600">Rebate: ${item.rebate.toFixed(2)}</p>
+                )}
+                <p className="text-gray-600">Subtotal: ${calculateItemSubtotal(item)}</p>
                 <div className="flex items-center mt-2">
                   <input 
                     type="number" 

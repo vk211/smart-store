@@ -9,7 +9,7 @@ function ProductCard({ product }) {
   return (
     <div className="bg-white rounded-lg shadow-md overflow-hidden">
       <img 
-        src={`/images/${product.image}`} 
+        src={product.image} 
         alt={product.name} 
         className="w-full h-48 object-cover"
       />

@@ -21,14 +21,33 @@ function ProductDetail() {
 
   if (!product) return <div className="text-center py-8">Loading...</div>;
 
+  const discountedPrice = product.discount 
+    ? product.price * (1 - product.discount / 100) 
+    : product.price;
+
   return (
     <div className="product-detail bg-white rounded-lg shadow-md p-6">
       <h2 className="text-3xl font-bold mb-4">{product.name}</h2>
       <div className="flex flex-col md:flex-row">
-        <img src={`/images/${product.image}`} alt={product.name} className="w-full md:w-1/2 h-64 object-cover rounded-lg mb-4 md:mb-0 md:mr-6" />
+        <img src={product.image} alt={product.name} className="w-full md:w-1/2 h-64 object-cover rounded-lg mb-4 md:mb-0 md:mr-6" />
         <div className="flex-1">
           <p className="text-gray-600 mb-4">{product.description}</p>
-          <p className="text-2xl font-bold mb-2">Price: ${product.price.toFixed(2)}</p>
+          <div className="mb-4">
+            {product.discount ? (
+              <div>
+                <span className="text-2xl font-bold text-red-500">${discountedPrice.toFixed(2)}</span>
+                <span className="text-lg line-through text-gray-500 ml-2">${product.price.toFixed(2)}</span>
+                <span className="text-lg text-green-500 ml-2">Save {product.discount}%</span>
+              </div>
+            ) : (
+              <span className="text-2xl font-bold">${product.price.toFixed(2)}</span>
+            )}
+          </div>
+          {product.rebate > 0 && (
+            <div className="text-lg text-blue-500 mb-4">
+              ${product.rebate} mail-in rebate available
+            </div>
+          )}
           <button 
             onClick={() => addToCart(product)}
             className="bg-blue-500 text-white px-6 py-2 rounded hover:bg-blue-600"
