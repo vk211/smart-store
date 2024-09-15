@@ -56,7 +56,7 @@ function ShoppingCart() {
         <>
           {cartItems.map(item => (
             <div key={item.id} className="flex items-center border-b border-gray-200 py-4">
-              <img src={`/images/${item.image}`} alt={item.name} className="w-24 h-24 object-cover rounded-md mr-4" />
+              <img src={`${item.image}`} alt={item.name} className="w-24 h-24 object-cover rounded-md mr-4" />
               <div className="flex-1">
                 <h3 className="text-xl font-semibold">{item.name}</h3>
                 <p className="text-gray-600">Price: ${item.price.toFixed(2)}</p>

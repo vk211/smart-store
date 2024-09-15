@@ -104,6 +104,9 @@ const StoreManagerDashboard = () => {
         <button onClick={toggleSortOrder} className="p-2 bg-gray-200 rounded">
           Sort {sortOrder === 'asc' ? '↑' : '↓'}
         </button>
+        <button  className="px-5 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 mr-2">
+          ADD NEW PRODUCT 
+        </button>
       </div>
 
       {currentItems.map(product => (

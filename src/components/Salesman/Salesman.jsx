@@ -32,7 +32,7 @@ const SalesmanDashboard = () => {
   const [newCustomer, setNewCustomer] = useState({
     name: "",
     email: "",
-    phone: "",
+    phone: "88",
   });
   const [newOrder, setNewOrder] = useState({
     customerId: "",
@@ -153,6 +153,7 @@ const SalesmanDashboard = () => {
             onChange={(e) => setNewOrder({...newOrder, customerId: e.target.value})}
             className="mr-2 p-2 border rounded"
           >
+            
             <option value="">Select Customer</option>
             {customers.map((customer) => (
               <option key={customer.id} value={customer.id}>{customer.name}</option>
