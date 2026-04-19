@@ -7,7 +7,7 @@ This project is an enterprise-grade automobile recommendation system integrating
 
 
 ## 🔗 Project Repository  
-[GitHub Repository](https://github.com/Akash-chatur/AutoGenAI.git)
+[GitHub Repository](https://github.com/vk211/smart-store/README.md)
 
 🚀 **Want to see the code?** Request access by reaching out!
 
