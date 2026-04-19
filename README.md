@@ -180,8 +180,8 @@ and re-run the migration command
 
 ### Some working samples of the application
 
-![image](https://gist.github.com/user-attachments/assets/491e56bd-4fe6-4cf0-bd03-68c941a2b9ef)
+![image](https://github.com/vk211/smart-store/1)
 
-![image](https://gist.github.com/user-attachments/assets/723adfc8-5d06-4bfc-b69c-953726477282)
+![image](https://github.com/vk211/smart-store/2)
 
-![image](https://gist.github.com/user-attachments/assets/b602f0ec-ad7d-4a64-b035-ceb17f4b9162)
+![image](https://github.com/vk211/smart-store/3)
