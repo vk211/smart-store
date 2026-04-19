@@ -1,70 +1,187 @@
-# Getting Started with Create React App
+# GenAI-Based Automobile Recommendation System
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is an enterprise-grade automobile recommendation system integrating Generative AI (LLMs) to enhance the customer experience. The system features a React-based frontend, a Node.js backend with Sequelize, and databases PostgreSQL & MongoDB.
 
-## Available Scripts
 
-In the project directory, you can run:
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 🔗 Project Repository  
+[GitHub Repository](https://github.com/Akash-chatur/AutoGenAI.git)
 
-### `npm test`
+🚀 **Want to see the code?** Request access by reaching out!
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+# Key Features:
+*AI-Powered Chatbot*: Users can interact via natural language to get personalized car recommendations.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+*Comprehensive Car Listings*: Browse and filter cars by brand, price, and specifications.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+*Seamless Checkout*: Securely add cars to the cart, proceed with payments, and track order history.
 
-### `npm run eject`
+*LLM Integration with LangChain*: AI agents process queries, call APIs, and enhance recommendations.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+# Phase 2 Enhancements:
+*Fraud Detection Agent*: Uses OCR and AI models to analyze fraudulent transactions.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+*Order Status & Fault Detection Agent*: Evaluates vehicle damage images to suggest repairs, replacements, or escalations.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+**Tech Stack**: React, NextUI, Node.js, Sequelize, PostgreSQL, MongoDB, LangChain, OpenAI Models
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+# Vite & NextUI Template
 
-### Code Splitting
+This is a template for creating applications using Vite and NextUI (v2).
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+[Try it on CodeSandbox](https://githubbox.com/nextui-org/vite-template)
 
-### Analyzing the Bundle Size
+## Technologies Used
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- [Vite](https://vitejs.dev/guide/)
+- [NextUI](https://nextui.org)
+- [Tailwind CSS](https://tailwindcss.com)
+- [Tailwind Variants](https://tailwind-variants.org)
+- [TypeScript](https://www.typescriptlang.org)
+- [Framer Motion](https://www.framer.com/motion)
 
-### Making a Progressive Web App
+## How to Use
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+To clone the project, run the following command:
 
-### Advanced Configuration
+```bash
+git clone https://github.com/nextui-org/vite-template.git
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### Install dependencies
 
-### Deployment
+You can use one of them `npm`, `yarn`, `pnpm`, `bun`, Example using `npm`:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+```bash
+npm install
+```
 
-### `npm run build` fails to minify
+### Run the development server
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```bash
+npm run dev
+```
+
+## Backend
+
+### Requirements
+
+- Node.js (v14.x or higher)
+- MySQL (v5.7 or higher)
+- npm (Node Package Manager)
+
+### Installation
+
+1. **Clone the Repository**
+
+   ```bash
+   git clone <repository-url>
+   cd AutoGenAI/backend
+   ```
+
+2. **Install Dependencies**
+
+   ```bash
+   npm install
+   ```
+
+3. **Database Configuration**
+
+   - Open the `config/database.js` file.
+   - Set your database credentials, including the database name, username, and password.
+
+   ```javascript
+   const { Sequelize } = require("sequelize");
+
+   const sequelize = new Sequelize("agi", "your_username", "your_password", {
+     host: "localhost",
+     dialect: "mysql",
+   });
+
+   module.exports = sequelize;
+   ```
+
+   - Open the `config/config.js` file.
+   - Set your database credentials, including the database name, username, and password in the development server.
+
+   ```javascript
+   {
+    "development": {
+   "username": "root",
+   "password": "password",
+   "database": "NextGenCars",
+   "host": "127.0.0.1",
+   "dialect": "mysql"
+     }
+   }
+   ```
+
+4. **Create Database**
+
+   Create the MySQL database before running the application.
+
+   ```sql
+   CREATE DATABASE agi;
+   ```
+
+5. **Run the Server**
+
+   ```bash
+   node index.js
+   ```
+
+   The server will start on port 3000. You should see a message indicating that the server is running and the database is synced.
+
+### Data Insert
+
+To insert data from a CSV file into the database, use the following command:
+
+```bash
+node insertData.js
+```
+
+This command will:
+
+- Drop the existing `cars` table if it exists.
+- Create a new `cars` table.
+- Read data from `temp_data/cars.csv` and insert it into the database.
+
+run:
+
+```bash
+npm install dotenv
+```
+
+create a .env file in backend main directory
+add the following line
+OPENAI_API_KEY='YOUR KEY'
+
+### Create Users table and Order table
+
+Run the following command to get the users & order tables in the database:
+
+```bash
+npx sequelize-cli db:migrate
+```
+
+If for some reason the migrate command does not work use the following command:
+
+```bash
+npx sequelize-cli db:migrate:undo
+and re-run the migration command
+```
+
+### Some working samples of the application
+
+![image](https://gist.github.com/user-attachments/assets/491e56bd-4fe6-4cf0-bd03-68c941a2b9ef)
+
+![image](https://gist.github.com/user-attachments/assets/723adfc8-5d06-4bfc-b69c-953726477282)
+
+![image](https://gist.github.com/user-attachments/assets/b602f0ec-ad7d-4a64-b035-ceb17f4b9162)
